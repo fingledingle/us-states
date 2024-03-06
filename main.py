@@ -56,10 +56,18 @@ while score < amount_of_states:
         # print(new_x_value)
         # print(new_y_value)
         print("Oh wow that exists?!")
-        print(state_to_list)
 
     elif answer_state == "Exit":
-        
+        missing_state = []
+        for state in state_to_list:
+            if state not in guessed_states:
+                missing_state.append(state)
+
+        forgotten_states = {
+            "missing states": missing_state}
+        forgotten_states_data = pandas.DataFrame(forgotten_states)
+        forgotten_states_data.to_csv("forgotten_states.csv")
+        break
 
     else:
         print("nuh uh this doesnt exist")
